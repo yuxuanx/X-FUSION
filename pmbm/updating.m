@@ -17,7 +17,8 @@ if isempty(r{1})
         r_update{1} = rr(idx);
         x_update{1} = xx(:,idx);
         p_update{1} = pp(:,:,idx);
-        x_est = x_update{1}(:,r_update{1}>0.5);
+        x_est = state_extract(r_update{1},x_update{1});
+%         x_est = x_update{1}(:,r_update{1}>0.5);
         
         idx = (rr < model.threshold) & (rr > H_threshold);
         lambdau = [lambdau;rr(idx)];
@@ -28,7 +29,8 @@ if isempty(r{1})
         r_update{1} = rr(idx);
         x_update{1} = xx(:,idx);
         p_update{1} = pp(:,:,idx);
-        x_est = x_update{1}(:,r_update{1}>0.5);
+        x_est = state_extract(r_update{1},x_update{1});
+%         x_est = x_update{1}(:,r_update{1}>0.5);
     end
     
     return;
@@ -91,4 +93,4 @@ if IF_recycle
 end
 
 % Best state extraction
-x_est = state_extract( w_update, r_update, x_update);
+x_est = state_extract2( w_update, r_update, x_update);

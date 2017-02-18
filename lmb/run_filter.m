@@ -40,7 +40,7 @@ for k=1:meas.K
     
     %update
     glmb_predict= castlmbpred(tt_lmb_birth,tt_lmb_survive,filter);
-    glmb_update= update(glmb_predict,model,filter,meas,k);
+    glmb_update= updating(glmb_predict,model,filter,meas,k);
     
     %pruning and truncation
     tt_lmb_update= glmb2lmb(glmb_update);

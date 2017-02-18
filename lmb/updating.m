@@ -1,4 +1,4 @@
-function glmb_update= update(glmb_predict,model,filter,meas,k)
+function glmb_update= updating(glmb_predict,model,filter,meas,k)
 %gating by tracks
 m_tracks= [];
 P_tracks= [];

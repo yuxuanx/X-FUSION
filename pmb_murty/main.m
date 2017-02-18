@@ -1,10 +1,10 @@
 clc;clear
 dbstop if error
 % Generate model
-model= gen_model(0.75,30);
-IF_recycle = true;
+model= gen_model(0.75,10);
+IF_recycle = false;
 % Monte Carlo simulations
-numTrial = 100;
+numTrial = 200;
 K = 100;
 % GOSPA parameters
 gospa_p= 1;
@@ -34,7 +34,6 @@ parfor trial = 1:numTrial
     
     % Loop through time
     for t = 1:K
-        
         % Predict
         [r,x,P,lambdau,xu,Pu] = predict(r,x,P,lambdau,xu,Pu,model);
         

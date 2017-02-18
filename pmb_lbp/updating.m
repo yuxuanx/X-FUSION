@@ -11,8 +11,8 @@ if isempty(r)
         r_update = rr(idx);
         x_update = xx(:,idx);
         p_update = PP(:,:,idx);
-        x_est = x_update(:,r_update>0.5);
-%         x_est = state_extract(r_update,x_update);
+%         x_est = x_update(:,r_update>0.5);
+        x_est = state_extract(r_update,x_update);
         idx = (rr > model.H_threshold) & (rr < model.threshold);
         lambdau = [lambdau;rr(idx)];
         xu = [xu xx(:,idx)];
@@ -22,8 +22,8 @@ if isempty(r)
         r_update = rr(idx);
         x_update = xx(:,idx);
         p_update = PP(:,:,idx);
-        x_est = x_update(:,r_update>0.5);
-%         x_est = state_extract(r_update,x_update);
+%         x_est = x_update(:,r_update>0.5);
+        x_est = state_extract(r_update,x_update);
     end
     return;
 end
