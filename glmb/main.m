@@ -8,7 +8,7 @@ gospa_p= 1;
 gospa_c= 100;
 gospa_alpha= 2;
 gospa_vals= zeros(K,4,numTrial);
-model= gen_model(0.98,10);
+model= gen_model(0.75,10);
 
 parfor trial = 1:numTrial
     

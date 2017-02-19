@@ -8,10 +8,10 @@ est.N= zeros(meas.K,1);
 
 %filter parameters
 filter.H_bth= 10;                    %requested number of birth components/hypotheses
-filter.H_sur= 1000;                 %requested number of surviving components/hypotheses
-filter.H_upd= 1000;                 %requested number of updated components/hypotheses
-filter.H_max= 1000;                 %cap on number of posterior components/hypotheses
-filter.hyp_threshold= 1e-4;        %pruning threshold for components/hypotheses
+filter.H_sur= 3000;                 %requested number of surviving components/hypotheses
+filter.H_upd= 3000;                 %requested number of updated components/hypotheses
+filter.H_max= 3000;                 %cap on number of posterior components/hypotheses
+filter.hyp_threshold= 1e-5;        %pruning threshold for components/hypotheses
 
 filter.P_G= 0.999;                           %gate size in percentage
 filter.gamma= chi2inv(filter.P_G,model.z_dim);   %inv chi^2 dn gamma value
