@@ -2,7 +2,7 @@ clc;clear
 dbstop if error
 % Generate model
 model= gen_model(0.75,30);
-IF_recycle = true;
+IF_recycle = false;
 % Monte Carlo simulations
 numTrial = 200;
 K = 100;

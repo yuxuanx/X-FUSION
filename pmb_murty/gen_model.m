@@ -30,7 +30,7 @@ model.range_c= [ -1000 1000; -1000 1000 ];      %uniform clutter region
 model.lambda_fa= model.lfai/prod(model.range_c(:,2)-model.range_c(:,1)); %uniform clutter density
 
 model.threshold = 1e-1; % Threshold for pruning low weights track
-model.M = 50; % number of best assignments
+model.M = 20; % number of best assignments
 model.H_threshold = 1e-4; % Pruning threshold
 
 % Initialise new target parameter structure

@@ -3,7 +3,7 @@ dbstop if error
 
 K = 100;
 numTrial = 200;
-model = gen_model(0.98,10);
+model = gen_model(0.75,30);
 % GOSPA parameters
 gospa_p = 1;
 gospa_c = 100;
