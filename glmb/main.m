@@ -2,17 +2,17 @@ clc;clear
 dbstop if error
 
 numTrial = 100;
-K = 100;
+K = 101;
 % GOSPA parameters
 gospa_p= 1;
 gospa_c= 100;
 gospa_alpha= 2;
 gospa_vals= zeros(K,4,numTrial);
-model= gen_model(0.75,30);
+model= gen_model2(0.98,30);
 
 parfor trial = 1:numTrial
     
-    truth= gen_truth(model);
+    truth= gen_truth2(model);
     meas=  gen_meas(model,truth);
     est=   run_filter(model,meas);
     
