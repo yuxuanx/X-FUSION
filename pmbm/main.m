@@ -1,7 +1,7 @@
 clc;clear
 dbstop if error
 % Generate model
-model= gen_model2(0.98,30);
+model= gen_model2(0.75,30);
 % Recycling indicator
 IF_recycle = true;
 % Monte Carlo simulations

@@ -10,23 +10,36 @@ for k = 1:length(simulationData)
     eval([v '= data.averGospa;']);
 end
 %%
-x = '_30_98';
+x = '_coal_10_98';
 glmb = eval(strcat('glmb_joint',x));
 lmb = eval(strcat('lmb',x));
-pmbm_recycle = eval(strcat('pmbm_recycle_card',x));
-pmb_recycle = eval(strcat('pmb_murty_recycle_card',x));
+pmbm_recycle = eval(strcat('pmbm_recycle',x));
+% pmb_lbp_recycle = eval(strcat('pmb_lbp_recycle',x));
+pmb_murty_recycle = eval(strcat('pmb_murty_recycle',x));
 
 figure(1)
 for i = 1:4
     subplot(2,2,i)
-    plot(glmb(:,i),'LineWidth',1);
+    plot(0:100,glmb(:,i),'LineWidth',1);
+%     if i==1 || i==3
+%         ylim([0,150])
+%     end
     hold on
     grid on
-    plot(lmb(:,i),'LineWidth',1);
-    plot(pmbm_recycle(:,i),'LineWidth',1);
-    plot(pmb_recycle(:,i),'LineWidth',1);
-    lgd = legend('\delta-GLMB with joint prediction and update','LMB','PMBM w/ recycling','PMB (Murty) w/ recycling','Location','best');
-    lgd.FontSize = 6;
+    plot(0:100,lmb(:,i),'LineWidth',1);
+%     if i==1 || i==3
+%         ylim([0,150])
+%     end
+    plot(0:100,pmbm_recycle(:,i),'LineWidth',1);
+%     if i==1 || i==3
+%         ylim([0,150])
+%     end
+%     plot(0:100,pmb_lbp_recycle(:,i),'LineWidth',1);
+    plot(0:100,pmb_murty_recycle(:,i),'LineWidth',1);
+%     if i==1 || i==3
+%         ylim([0,150])
+%     end
+    lgd = legend('\delta-GLMB (joint)','LMB','PMBM w/ recycling','PMB (Murty) w/ recycling','Location','best');
     xlabel('time step')
     switch i
         case 1
