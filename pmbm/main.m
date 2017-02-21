@@ -1,12 +1,12 @@
 clc;clear
 dbstop if error
 % Generate model
-model= gen_model(0.98,10);
+model= gen_model2(0.98,30);
 % Recycling indicator
 IF_recycle = true;
 % Monte Carlo simulations
 numTrial = 100;
-K = 100;
+K = 101;
 % GOSPA parameters
 gospa_p= 1;
 gospa_c= 100;
@@ -16,7 +16,7 @@ gospa_vals= zeros(K,4,numTrial);
 parfor trial = 1:numTrial
     
     % Generate ground truth
-    truth= gen_truth(model);
+    truth= gen_truth2(model);
     
     % Generate measurements
     meas=  gen_meas(model,truth);
@@ -32,7 +32,7 @@ parfor trial = 1:numTrial
     w_update = 1;
     
     % Unknown target PPP parameters
-    lambdau = model.lambdab;
+    lambdau = model.lambdau;
     xu = model.xb;
     Pu = model.Pb;
     
