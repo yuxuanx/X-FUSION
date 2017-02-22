@@ -4,12 +4,15 @@ function [ x_est ] = state_extract2( w_update, r_update, x_update)
 num = length(w_update);
 pcard = cell(num,1);
 len = zeros(num,1);
+C_mb = zeros(num,1);
 
 % for each MB component, obtain cardinality pmf
 for i = 1:num
     r = r_update{i};
     r(r==1) = 1-eps;
     pcard{i} = prod(1-r)*poly(-r./(1-r));
+    [~,n] = max(pcard{i});
+    C_mb(i) = n-1;
     len(i) = length(pcard{i});
 end
 
@@ -33,17 +36,21 @@ pcard_mbm = sum(pcard_mb);
 C_max = n-1;
 
 % for each MB hypothesis in the MBM, find the MAP cardinality estimate
-C_mb = zeros(num,1);
-for i = 1:num
-    C_mb(i) = sum(r_update{i}>=0.5);
-end
+% C_mb = zeros(num,1);
+% for i = 1:num
+%     C_mb(i) = sum(r_update{i}>=0.5);
+% end
 
 % take the highest weight MB component satisfy C_max = C_mb
 w_update(C_mb~=C_max) = 0;
 [~,idx] = max(w_update);
 
 % state extraction
-idices = r_update{idx} >= 0.5;
-x_est = x_update{idx}(:,idices);
+[~,o] = sort(-r_update{idx});
+ss = false(size(r_update{idx}));
+ss(o(1:C_max)) = true;
+x_est = x_update{idx}(:,ss);
+% idices = r_update{idx} >= 0.5;
+% x_est = x_update{idx}(:,idices);
 
 end

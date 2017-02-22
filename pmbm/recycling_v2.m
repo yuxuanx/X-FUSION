@@ -44,7 +44,7 @@ phi = zeros(H,maxLen);
 for i = 1:H
     for j = 1:len
         for k = 1:length(r_recycle{j})
-            if isequal(h_x(1,i),x_recycle{j}(1,k)) && isequal(h_r(i),r_recycle{j}(k))
+            if isequal(h_x(1,i),x_recycle{j}(1,k))
                 phi(i,k) = phi(i,k) + w_update(j);
             end
         end
@@ -64,7 +64,7 @@ while(1)
     [C,r_temp,x_temp,P_temp] = cost(phi,h_r,h_x,h_p);
     [Cmin,phi] = LP_transport(C,pn,ph);
     iteration = iteration + 1;
-    if (temp - Cmin < threshold && temp >= Cmin) || (iteration > maxIterations)
+    if (temp - Cmin < 1e-4 && temp >= Cmin) || (iteration > maxIterations)
         r_hat = r_temp;
         x_hat = x_temp;
         P_hat = P_temp;

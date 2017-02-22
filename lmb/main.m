@@ -2,7 +2,7 @@ clc;clear
 dbstop if error
 
 K = 100;
-numTrial = 200;
+numTrial = 20;
 model = gen_model(0.75,30);
 % GOSPA parameters
 gospa_p = 1;

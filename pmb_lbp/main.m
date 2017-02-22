@@ -1,10 +1,10 @@
 clc;clear
 dbstop if error
 % Generate model
-model= gen_model(0.75,30);
-IF_recycle = false;
+model= gen_model(0.98,10);
+IF_recycle = true;
 % Monte Carlo simulations
-numTrial = 200;
+numTrial = 20;
 K = 100;
 % GOSPA parameters
 gospa_p= 1;
