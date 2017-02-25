@@ -15,12 +15,11 @@ gospa_alpha= 2;
 gospa_vals= zeros(K,4,numTrial);
 
 parfor trial = 1:numTrial
-
+    
     truth= gen_truth(model);
-    meas=  gen_meas(model,truth);    
+    meas=  gen_meas(model,truth);
     est = run_filter(model,meas,IF_recycle);
     
-    % Loop through time
     for t = 1:K
         % Performance evaluation using GOSPA metric
         [gospa_vals(t,:,trial)] = gospa_dist(get_comps(truth.X{t},[1 3]),...
