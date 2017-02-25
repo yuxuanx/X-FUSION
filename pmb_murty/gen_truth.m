@@ -30,7 +30,8 @@ xstart(:,12)  = [ -800; 12; -200; 7 ];      tbirth(12)  = 80;   tdeath(12) = tru
 
 %generate the tracks
 for targetnum=1:nbirths
-    targetstate = mvnrnd(xstart(:,targetnum),diag([ 10; 0; 10; 0 ])*diag([ 10; 0; 10; 0 ])')';
+%     targetstate = mvnrnd(xstart(:,targetnum),diag([ 10; 0; 10; 0 ])*diag([ 10; 0; 10; 0 ])')';
+    targetstate = xstart(:,targetnum);
     for k=tbirth(targetnum):min(tdeath(targetnum),truth.K)
         targetstate = gen_newstate_fn(model,targetstate,'noiseless');
         truth.X{k}= [truth.X{k} targetstate];
