@@ -4,9 +4,9 @@ dbstop if error
 K = 100;
 numTrial = 500;
 
-model= gen_model(0.75,30);
-load('truth_30_75');
-load('meas_30_75');
+model= gen_model(0.75,10);
+load('truth_10_75');
+load('meas_10_75');
 % GOSPA parameters
 gospa_p = 1;
 gospa_c = 100;

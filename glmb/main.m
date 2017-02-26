@@ -9,9 +9,9 @@ gospa_c= 100;
 gospa_alpha= 2;
 gospa_vals= zeros(K,4,numTrial);
 
-model= gen_model(0.75,10);
-load('truth_10_75');
-load('meas_10_75');
+model= gen_model(0.75,30);
+load('truth_30_75');
+load('meas_30_75');
 
 
 parfor trial = 1:numTrial
