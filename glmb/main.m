@@ -14,7 +14,7 @@ load('truth_30_75');
 load('meas_30_75');
 
 
-parfor trial = 1:numTrial
+parfor trial = 101:numTrial
     
 %     truth= gen_truth(model);
 %     meas=  gen_meas(model,truth);

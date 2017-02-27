@@ -31,9 +31,9 @@ glmb_update.cdn= 1;             %cardinality distribution of GLMB (vector of car
 for k=1:meas.K
     
     %prediction and update
-%     glmb_predict= predict(glmb_update,model,filter);
-%     glmb_update= updating(glmb_predict,model,filter,meas,k);
-    glmb_update = joint_prediction_update(glmb_update,model,filter,meas,k);
+    glmb_predict= predict(glmb_update,model,filter);
+    glmb_update= updating(glmb_predict,model,filter,meas,k);
+%     glmb_update = joint_prediction_update(glmb_update,model,filter,meas,k);
     
     %pruning and truncation
     glmb_update= prune(glmb_update,filter);
