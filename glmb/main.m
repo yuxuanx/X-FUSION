@@ -1,7 +1,7 @@
 clc;clear
 dbstop if error
 
-numTrial = 200;
+numTrial = 50;
 K = 100;
 % GOSPA parameters
 gospa_p= 1;
@@ -9,16 +9,20 @@ gospa_c= 100;
 gospa_alpha= 2;
 gospa_vals= zeros(K,4,numTrial);
 
-model= gen_model(0.75,30);
-load('truth_30_75');
-load('meas_30_75');
+model= gen_model(0.98,30);
+load('truth_30_98');
+load('meas_30_98');
+
+time = zeros(numTrial,1);
 
 
-parfor trial = 101:numTrial
+parfor trial = 1:numTrial
     
 %     truth= gen_truth(model);
 %     meas=  gen_meas(model,truth);
-    est=   run_filter(model,meas{trial});
+    tic
+    est= run_filter(model,meas{trial});
+    time(trial) = toc;
     
     for k=1:K
         [gospa_vals(k,:,trial)] = ...
