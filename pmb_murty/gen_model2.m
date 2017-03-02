@@ -30,7 +30,7 @@ model.lfai= lambda;                             %poisson average rate of uniform
 model.range_c= [ -100 100; -100 100 ];      %uniform clutter region
 model.lambda_fa= model.lfai/prod(model.range_c(:,2)-model.range_c(:,1)); %uniform clutter density
 
-model.M = 100;
+model.M = 20;
 model.threshold = 1e-1; % Threshold for pruning low weights track
 model.H_max = 100; % capping threshold
 model.H_threshold = 1e-4; % Pruning threshold
