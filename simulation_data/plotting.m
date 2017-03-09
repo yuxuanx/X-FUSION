@@ -1,46 +1,100 @@
-load('10_98')
-% errorbar(x,y,yneg,ypos,xneg,xpos,'o','MarkerSize',5,...
-%     'MarkerEdgeColor','red','MarkerFaceColor','red','Linewidth',1);
-% figure('units','normalized','position',[.2 .2 .4 .4])
-figure(1)
-subplot(2,2,1)
-for i = 1:9
-    errorbar(x(i),y1(i),yneg1(i),ypos1(i),xneg(i),xpos(i),'o','MarkerSize',5,'Linewidth',1);
-    hold on
-end
-set(gca,'xscale','log')
-xlabel('Time (seconds)')
-ylabel('MGOSPA (Total)')
-legend('\delta-GLMB','\delta-GLMB(Joint)','LMB','PMBM','PMBM(Recycle)',...
-    'PMB(LBP)','PMB(LBP+Recycle)','PMB(Murty)','PMB(Murty+Recycle)','Location','best');
-subplot(2,2,2)
-for i = 1:9
-    errorbar(x(i),y2(i),yneg2(i),ypos2(i),xneg(i),xpos(i),'o','MarkerSize',5,'Linewidth',1);
-    hold on
-end
-set(gca,'xscale','log')
-xlabel('Time (seconds)')
-ylabel('MGOSPA (Loc)')
-% legend('\delta-GLMB','\delta-GLMB(Joint)','LMB','PMBM','PMBM(Recycle)',...
-%     'PMB(LBP)','PMB(LBP+Recycle)','PMB(Murty)','PMB(Murty+Recycle)','Location','best');
-subplot(2,2,3)
-for i = 1:9
-    errorbar(x(i),y3(i),yneg3(i),ypos3(i),xneg(i),xpos(i),'o','MarkerSize',5,'Linewidth',1);
-    hold on
-end
-set(gca,'xscale','log')
-xlabel('Time (seconds)')
-ylabel('MGOSPA (Missed)')
-% legend('\delta-GLMB','\delta-GLMB(Joint)','LMB','PMBM','PMBM(Recycle)',...
-%     'PMB(LBP)','PMB(LBP+Recycle)','PMB(Murty)','PMB(Murty+Recycle)','Location','best');
-subplot(2,2,4)
-for i = 1:9
-    errorbar(x(i),y4(i),yneg4(i),ypos4(i),xneg(i),xpos(i),'o','MarkerSize',5,'Linewidth',1);
-    hold on
-end
-set(gca,'xscale','log')
-xlabel('Time (seconds)')
-ylabel('MGOSPA (False)')
-% legend('\delta-GLMB','\delta-GLMB(Joint)','LMB','PMBM','PMBM(Recycle)',...
-%     'PMB(LBP)','PMB(LBP+Recycle)','PMB(Murty)','PMB(Murty+Recycle)','Location','best');
+%% Load simulation data
 
+filePattern = fullfile(pwd,'*.mat');
+simulationData = dir(filePattern);
+for k = 1:length(simulationData)
+    baseFileName = simulationData(k).name;
+    baseFileName = baseFileName(1:end-4);
+    data = load(baseFileName);
+    v = genvarname(baseFileName, who);
+    eval([v '= data.averGospa;']);
+end
+%%
+% figure
+% subplot(4,1,1)
+% x = '_10_98';
+% glmb = eval(strcat('glmb_joint',x));
+% lmb = eval(strcat('lmb',x));
+% pmbm_recycle = eval(strcat('pmbm_recycle_card',x));
+% pmb_murty_recycle = eval(strcat('pmb_murty_recycle_card',x));
+% plot(glmb(:,3),'r','Linewidth',1);
+% hold on
+% grid on
+% plot(lmb(:,3),'g','Linewidth',1);
+% plot(pmbm_recycle(:,3),'m','Linewidth',1);
+% plot(pmb_murty_recycle(:,3),'b','Linewidth',1);
+% xlabel('Time step')
+% ylabel('Miss error')
+% subplot(4,1,2)
+% x = '_30_98';
+% glmb = eval(strcat('glmb_joint',x));
+% lmb = eval(strcat('lmb',x));
+% pmbm_recycle = eval(strcat('pmbm_recycle_card',x));
+% pmb_murty_recycle = eval(strcat('pmb_murty_recycle_card',x));
+% plot(glmb(:,3),'r','Linewidth',1);
+% hold on
+% grid on
+% plot(lmb(:,3),'g','Linewidth',1);
+% plot(pmbm_recycle(:,3),'m','Linewidth',1);
+% plot(pmb_murty_recycle(:,3),'b','Linewidth',1);
+% xlabel('Time step')
+% ylabel('Miss error')
+% subplot(4,1,3)
+% x = '_10_75';
+% glmb = eval(strcat('glmb_joint',x));
+% lmb = eval(strcat('lmb',x));
+% pmbm_recycle = eval(strcat('pmbm_recycle_card',x));
+% pmb_murty_recycle = eval(strcat('pmb_murty_recycle_card',x));
+% plot(glmb(:,3),'r','Linewidth',1);
+% hold on
+% grid on
+% plot(lmb(:,3),'g','Linewidth',1);
+% plot(pmbm_recycle(:,3),'m','Linewidth',1);
+% plot(pmb_murty_recycle(:,3),'b','Linewidth',1);
+% xlabel('Time step')
+% ylabel('Miss error')
+% subplot(4,1,4)
+% x = '_30_75';
+% glmb = eval(strcat('glmb_joint',x));
+% lmb = eval(strcat('lmb',x));
+% pmbm_recycle = eval(strcat('pmbm_recycle_card',x));
+% pmb_murty_recycle = eval(strcat('pmb_murty_recycle_card',x));
+% plot(glmb(:,3),'r','Linewidth',1);
+% hold on
+% grid on
+% plot(lmb(:,3),'g','Linewidth',1);
+% plot(pmbm_recycle(:,3),'m','Linewidth',1);
+% plot(pmb_murty_recycle(:,3),'b','Linewidth',1);
+% xlabel('Time step')
+% ylabel('Miss error')
+
+%%
+x = '_coal_30_75';
+glmb = eval(strcat('glmb',x));
+lmb = eval(strcat('lmb',x));
+pmb = eval(strcat('pmb',x));
+% pmb_lbp_recycle = eval(strcat('pmb_lbp_recycle',x));
+pmbm = eval(strcat('pmbm',x));
+
+figure(1)
+for i = 1:4
+    subplot(2,2,i)
+    plot(0:100,glmb(:,i),'LineWidth',1);
+    hold on
+    grid on
+    plot(0:100,lmb(:,i),'LineWidth',1);
+    plot(0:100,pmbm(:,i),'LineWidth',1);
+    plot(0:100,pmb(:,i),'LineWidth',1);
+    lgd = legend('\delta-GLMB (joint)','LMB','PMBM w/ recycling','PMB (Murty) w/ recycling','Location','best');
+    xlabel('time step')
+    switch i
+        case 1
+            ylabel('Mean GOSPA (Total)');
+        case 2
+            ylabel('Mean GOSPA (Loc)')
+        case 3
+            ylabel('Mean GOSPA (Missed)')
+        case 4
+            ylabel('Mean GOSPA (False)')
+    end
+end

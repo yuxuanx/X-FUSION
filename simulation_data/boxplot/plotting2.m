@@ -10,7 +10,7 @@ for k = 1:length(simulationData)
     eval([v '= data.gospa_vals;']);
 end
 
-x = '_10_75';
+x = '_30_75';
 glmb = eval(strcat('glmb',x));
 glmb_joint = eval(strcat('glmb_joint',x));
 lmb = eval(strcat('lmb',x));
@@ -28,11 +28,12 @@ for i = 1:4
     p(4) = p(4)*1.10;
     p(3) = p(3)*1.10;
     set(g, 'position', p);
-    load('/Users/xiayuxuan/Documents/MATLAB/Master thesis/v1.2/simulation_data/10_75');
+    load('/Users/xiayuxuan/Documents/MATLAB/Master thesis/v1.2/simulation_data/30_75');
     case_a = extractData(i,glmb,glmb_joint,lmb,pmbm,pmbm_recycle,...
         pmb_lbp_recycle,pmb_murty_recycle);
+    colors = [0.5 0 0.5;1 0 1;0.65 0.165 0.165;1 0 0;0 1 0;0 0 1;0 0 0];
     boxplot(case_a,'position',x([1,2,3,4,5,7,9]),'Colors',...
-        'ymcrgbk','PlotStyle','compact')
+        colors,'PlotStyle','compact')
     switch i
         case 1 
             ylabel('MGOSPA (Total)')

@@ -11,7 +11,7 @@ x = zeros(dim,n);
 P = zeros(dim,dim,n);
 
 % Unknown target PPP parameters
-lambdau = model.lambdau;
+lambdau = model.lambdab;
 xu = model.xb;
 Pu = model.Pb;
 

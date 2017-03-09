@@ -1,9 +1,9 @@
 clc;clear
 dbstop if error
 % Generate model
-model= gen_model2(0.98,10);
-load('truth2_10_98');
-load('meas2_10_98');
+model= gen_model2(0.75,30);
+load('truth2_30_75');
+load('meas2_30_75');
 IF_recycle = true;
 % Monte Carlo simulations
 numTrial = 200;

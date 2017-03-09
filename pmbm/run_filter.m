@@ -13,7 +13,7 @@ P{1} = zeros(4,4,n);
 w_update = 1;
 
 % Unknown target PPP parameters
-lambdau = model.lambdau;
+lambdau = model.lambdab;
 xu = model.xb;
 Pu = model.Pb;
 
