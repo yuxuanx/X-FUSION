@@ -1,3 +1,4 @@
+clc;clear
 %% Load simulation data
 
 filePattern = fullfile(pwd,'*.mat');
@@ -69,23 +70,28 @@ end
 % ylabel('Miss error')
 
 %%
-x = '_coal_30_75';
+x = '_coal_30_98';
 glmb = eval(strcat('glmb',x));
-lmb = eval(strcat('lmb',x));
+lmb = eval(strcat('lmb_300',x));
 pmb = eval(strcat('pmb',x));
 % pmb_lbp_recycle = eval(strcat('pmb_lbp_recycle',x));
 pmbm = eval(strcat('pmbm',x));
 
 figure(1)
 for i = 1:4
-    subplot(2,2,i)
-    plot(0:100,glmb(:,i),'LineWidth',1);
+    g = subplot(2,2,i);
+    p = get(g,'position');
+    p(4) = p(4)*1.10;
+    p(3) = p(3)*1.10;
+    set(g, 'position', p);
+    plot(0:100,glmb(:,i),'g','LineWidth',0.8);
     hold on
     grid on
-    plot(0:100,lmb(:,i),'LineWidth',1);
-    plot(0:100,pmbm(:,i),'LineWidth',1);
-    plot(0:100,pmb(:,i),'LineWidth',1);
-    lgd = legend('\delta-GLMB (joint)','LMB','PMBM w/ recycling','PMB (Murty) w/ recycling','Location','best');
+    
+    plot(0:100,pmbm(:,i),'r','LineWidth',0.8);
+    plot(0:100,pmb(:,i),'b','LineWidth',0.8);
+    plot(0:100,lmb(:,i),'m','LineWidth',0.8);
+%     lgd = legend('\delta-GLMB (joint)','PMBM w/ recycling','PMB (Murty) w/ recycling','LMB','Location','best');
     xlabel('time step')
     switch i
         case 1

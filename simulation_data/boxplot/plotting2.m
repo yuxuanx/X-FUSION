@@ -10,7 +10,7 @@ for k = 1:length(simulationData)
     eval([v '= data.gospa_vals;']);
 end
 
-x = '_30_75';
+x = '_30_98';
 glmb = eval(strcat('glmb',x));
 glmb_joint = eval(strcat('glmb_joint',x));
 lmb = eval(strcat('lmb',x));
@@ -25,8 +25,8 @@ figure
 for i = 1:4
     g = subplot(2,2,i);
     p = get(g,'position');
-    p(4) = p(4)*1.10;
-    p(3) = p(3)*1.10;
+    p(4) = p(4)*1.15;
+    p(3) = p(3)*1.15;
     set(g, 'position', p);
     load('/Users/xiayuxuan/Documents/MATLAB/Master thesis/v1.2/simulation_data/30_75');
     case_a = extractData(i,glmb,glmb_joint,lmb,pmbm,pmbm_recycle,...
@@ -36,13 +36,13 @@ for i = 1:4
         colors,'PlotStyle','compact')
     switch i
         case 1 
-            ylabel('MGOSPA (Total)')
+            ylabel('GOSPA (Total)')
         case 2
-            ylabel('MGOSPA (Loc)')
+            ylabel('GOSPA (Loc)')
         case 3
-            ylabel('MGOSPA (Missed)')
+            ylabel('GOSPA (Missed)')
         case 4
-            ylabel('MGOSPA (False)')
+            ylabel('GOSPA (False)')
     end
     xlabel('time (s)')
     grid on
