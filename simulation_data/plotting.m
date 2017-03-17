@@ -77,12 +77,12 @@ pmb = eval(strcat('pmb',x));
 % pmb_lbp_recycle = eval(strcat('pmb_lbp_recycle',x));
 pmbm = eval(strcat('pmbm',x));
 
-figure(1)
+figure('units','normalized','position',[0.5 0.5 0.5 0.5])
 for i = 1:4
     g = subplot(2,2,i);
     p = get(g,'position');
-    p(4) = p(4)*1.10;
-    p(3) = p(3)*1.10;
+    p(4) = p(4)*1.1;
+    p(3) = p(3)*1.1;
     set(g, 'position', p);
     plot(0:100,glmb(:,i),'g','LineWidth',0.8);
     hold on
